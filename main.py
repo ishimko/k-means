@@ -15,8 +15,8 @@ def read_vectors(file_name):
 
 def write_result(vectors, clusters, file_name):
     with open(file_name, 'w') as output:
-        for centroid_index, cluster_items in clusters.items():
-            output.write('centroid {}\n'.format(str(vectors[centroid_index])))
+        for centroid, cluster_items in clusters.items():
+            output.write('centroid {}\n'.format(str(centroid)))
             for vector_index in cluster_items:
                 output.write('{}\n'.format(str(vectors[vector_index])))
 
