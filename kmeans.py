@@ -26,14 +26,18 @@ def get_centroid_index(vectors, members_indexes):
     return min(members_indexes, key=lambda i: sum(map(sqr, (distance(vectors[i], x) for x in current_cluster))))
 
 
-def kmeans(vectors, clusters_count, centroids_indexes=None, max_iterations=100):
+def kmeans(vectors, clusters_count, centroids_indexes=None, max_iterations=30):
     clusters = None
-    if centroids_indexes is None:
+    if not centroids_indexes:
         centroids_indexes = sample(range(len(vectors)), clusters_count)
+    elif len(centroids_indexes) != len(set(centroids_indexes)):
+        raise ValueError('Centroid indexes must be unique')
+    elif not all((i < len(vectors) for i in centroids_indexes)):
+        raise ValueError('Invalid centroid indexes')
     for i in range(max_iterations):
         clusters = allocate_clusters(vectors, centroids_indexes)
-        new_centroids = set(map(lambda x: get_centroid_index(vectors, x), clusters.values()))
+        centroids_indexes = set(map(lambda x: get_centroid_index(vectors, x), clusters.values()))
         old_centroids = set(clusters.keys())
-        if old_centroids == new_centroids:
+        if old_centroids == centroids_indexes:
             break
     return clusters
