@@ -17,10 +17,10 @@ def main():
     vectors = read_vectors(argv[1])
     clusters_count = int(argv[2])
     if vectors:
+        clusters = kmeans(vectors, clusters_count=clusters_count)
         if len(vectors[0]) == 2:
             display_source(vectors)
-        clusters = kmeans(vectors, clusters_count=clusters_count)
-        display_result(vectors, clusters)
+            display_result(vectors, clusters)
     else:
         print('Invalid input', file=stderr)
 
