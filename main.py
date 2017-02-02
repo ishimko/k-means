@@ -28,7 +28,6 @@ def main():
     if vectors:
         clusters = kmeans(vectors, clusters_count=clusters_count)
         if len(vectors[0]) == 2:
-            display_source(vectors)
             display_result(vectors, clusters)
         write_result(vectors, clusters, output_name)
     else:
