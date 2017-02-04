@@ -1,0 +1,2 @@
+# k-means
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7db20cefb6aa4fc3b76c2d962836b313)](https://www.codacy.com/app/vanashimko/k-means?utm_source=github.com&utm_medium=referral&utm_content=vanashimko/k-means&utm_campaign=badger)
