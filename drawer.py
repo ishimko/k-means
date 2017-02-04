@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
-import numpy as np
+from random import random
 
 
 def display_result(vectors, clusters):
-    colors = [np.random.rand(3, 1) for i in range(len(clusters))]
+    colors = [[random() for _ in range(3)] for _ in range(len(clusters))]
     centroids_colors = [[1-x for x in color] for color in colors]
     for cluster_index, (centroid, cluster) in enumerate(clusters.items()):
         current_cluster = [vectors[i] for i in cluster]
